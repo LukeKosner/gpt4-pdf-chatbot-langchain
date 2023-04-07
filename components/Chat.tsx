@@ -172,82 +172,91 @@ export default function Chat() {
   return (
     <div>
       <div ref={messageListRef} className="p-8 space-y-3">
-        {chatMessages.map((message: Message, index: number) => {
-          if (message.type === 'apiMessage') {
-            return (
-              <div key={`chatMessage-${index}`}>
-                <div
-                  key={`chatMessage-${index}`}
-                  className="flex flex-row items-center justify-between self-center"
-                >
-                  <div className="bg-blue-500 p-3 rounded-xl max-w-4xl">
-                    <ReactMarkdown linkTarget="_blank">
-                      {message.message}
-                    </ReactMarkdown>
+        {chatMessages.map(
+          (
+            message:
+              | Message
+              | { type: string; message: string; sourceDocs: SourceDoc[] },
+            index: number,
+          ) => {
+            if (message.type === 'apiMessage') {
+              return (
+                <div key={`chatMessage-${index}`}>
+                  <div
+                    key={`chatMessage-${index}`}
+                    className="flex flex-row items-center justify-between self-center"
+                  >
+                    <div className="bg-blue-500 p-3 rounded-xl max-w-4xl">
+                      <ReactMarkdown linkTarget="_blank">
+                        {message.message}
+                      </ReactMarkdown>
+                    </div>
+                    <p className="text-xl font-serif font-bold mr-3">
+                      Virtual Historian
+                    </p>
                   </div>
-                  <p className="text-xl font-serif font-bold mr-3">
-                    Virtual Historian
-                  </p>
+                  {message.sourceDocs && (
+                    <div className="p-5" key={`sourceDocsAccordion-${index}`}>
+                      <Accordion type="single" collapsible className="flex-col">
+                        {message.sourceDocs.map((doc, index) => (
+                          <div key={`messageSourceDocs-${index}`}>
+                            {doc.metadata.interview && (
+                              <AccordionItem value={`item-${index}`}>
+                                <AccordionTrigger>
+                                  <h3>
+                                    Source {index + 1}:{' '}
+                                    {doc.metadata.interview.name}
+                                  </h3>
+                                </AccordionTrigger>
+                                <AccordionContent>
+                                  {doc.metadata.interview?.type ==
+                                    InterviewType.IIT && (
+                                    <iframe
+                                      title={doc.metadata.interview.name}
+                                      src={doc.metadata.interview.url}
+                                      allow="fullscreen"
+                                      className="w-full h-96"
+                                    />
+                                  )}
+                                  <div>
+                                    <ReactMarkdown linkTarget="_blank">
+                                      {doc.pageContent}
+                                    </ReactMarkdown>
+                                  </div>
+                                  <Link href={doc.metadata.interview.url}>
+                                    <button className="mt-2 h-12 w-1/2 bg-white rounded-xl text-gray-800">
+                                      <b>View Source</b>
+                                    </button>
+                                  </Link>
+                                </AccordionContent>
+                              </AccordionItem>
+                            )}
+                          </div>
+                        ))}
+                      </Accordion>
+                    </div>
+                  )}
                 </div>
-                {message.sourceDocs && (
-                  <div className="p-5" key={`sourceDocsAccordion-${index}`}>
-                    <Accordion type="single" collapsible className="flex-col">
-                      {message.sourceDocs.map((doc, index) => (
-                        <div key={`messageSourceDocs-${index}`}>
-                          <AccordionItem value={`item-${index}`}>
-                            <AccordionTrigger>
-                              <h3>
-                                Source {index + 1}:{' '}
-                                {doc.metadata.interview.name}
-                              </h3>
-                            </AccordionTrigger>
-                            <AccordionContent>
-                              {doc.metadata.interview?.type ==
-                                InterviewType.IIT && (
-                                <iframe
-                                  title={doc.metadata.interview.name}
-                                  src={doc.metadata.interview.url}
-                                  allow="fullscreen"
-                                  className="w-full h-96"
-                                />
-                              )}
-                              <div>
-                                <ReactMarkdown linkTarget="_blank">
-                                  {doc.pageContent}
-                                </ReactMarkdown>
-                              </div>
-                              <Link href={doc.metadata.interview.url}>
-                                <button className="mt-2 h-12 w-1/2 bg-white rounded-xl text-gray-800">
-                                  <b>View Source</b>
-                                </button>
-                              </Link>
-                            </AccordionContent>
-                          </AccordionItem>
-                        </div>
-                      ))}
-                    </Accordion>
-                  </div>
-                )}
-              </div>
-            );
-          } else {
-            return (
-              <div key={`chatMessage-${index}`}>
-                <div
-                  key={`chatMessage-${index}`}
-                  className="flex flex-row items-center justify-between self-center align-top"
-                >
-                  <p className="text-xl font-serif font-bold mr-3">You</p>
-                  <div className="bg-blue-500 p-3 rounded-xl max-w-4xl">
-                    <ReactMarkdown linkTarget="_blank">
-                      {message.message}
-                    </ReactMarkdown>
+              );
+            } else {
+              return (
+                <div key={`chatMessage-${index}`}>
+                  <div
+                    key={`chatMessage-${index}`}
+                    className="flex flex-row items-center justify-between self-center align-top"
+                  >
+                    <p className="text-xl font-serif font-bold mr-3">You</p>
+                    <div className="bg-blue-500 p-3 rounded-xl max-w-4xl">
+                      <ReactMarkdown linkTarget="_blank">
+                        {message.message}
+                      </ReactMarkdown>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          }
-        })}
+              );
+            }
+          },
+        )}
         {sourceDocs.length > 0 && (
           <div className="p-5">
             <Accordion type="single" collapsible className="flex-col">
