@@ -28,7 +28,7 @@ export default function Messages(props: PropsWithChildren<Props>) {
                 className="flex flex-row items-center justify-between self-center"
               >
                 <div className="flex-col md:flex-none">
-                  <p className="text-lg md:text-xl visible md:invisible font-serif font-bold mr-3">
+                  <p className="text-lg md:text-xl visible md:invisible font-tight mr-3">
                     Virtual Historian
                   </p>
                   <div className="bg-blue-500 p-3 rounded-xl max-w-4xl">
@@ -38,7 +38,7 @@ export default function Messages(props: PropsWithChildren<Props>) {
                   </div>
                 </div>
 
-                <p className="text-xl invisible  md:visible font-serif font-bold mr-3">
+                <p className="text-xl invisible  md:visible font-tight mr-3">
                   Virtual Historian
                 </p>
               </div>
@@ -92,12 +92,12 @@ export default function Messages(props: PropsWithChildren<Props>) {
               key={`chatMessage-${index}`}
               className="flex flex-row items-center justify-between self-center"
             >
-              <p className="text-xl invisible md:visible font-serif font-bold mr-3">
+              <p className="text-xl invisible md:visible font-tight mr-3">
                 You
               </p>
               <div className="flex-col md:flex-none">
                 <div className="flex flex-row">
-                  <p className="text-lg md:text-xl visible md:invisible font-serif font-bold ml-auto">
+                  <p className="text-lg md:text-xl visible md:invisible font-tight ml-auto">
                     You
                   </p>
                 </div>

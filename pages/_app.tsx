@@ -2,6 +2,7 @@ import '@/styles/base.css';
 import type { AppProps } from 'next/app';
 import { Cormorant_Garamond, Inter_Tight, Inter } from 'next/font/google';
 import Head from 'next/head';
+import Link from 'next/link';
 
 export const metadata = {
   title: 'The Auschwitz Project',
@@ -33,20 +34,45 @@ function MyApp({ Component, pageProps }: AppProps) {
       <main
         className={`${inter_tight.variable} ${cormorant_garamond.variable} ${inter.variable} font-body`}
       >
-        <div className="flex justify-between items-center bg-gray-900 p-3 h-14">
-          <h3 className="text-2xl font-serif font-bold text-white">
-            The Auschwitz Project
-          </h3>
-          <Head>
-            <title>The Auschwitz Project</title>
-            <meta
-              name="description"
-              content="Speak with a virtual historian who has studied the primary accounts of Auschwitz."
-            />
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-        </div>
+        <Link href="/">
+          <div className="flex flex-row items-center justify-center bg-gray-900 p-3 h-14">
+            <h3 className="text-2xl font-serif font-bold text-white">
+              The Auschwitz Project
+            </h3>
+          </div>
+        </Link>
+        <Head>
+          <title>The Auschwitz Project</title>
+          <meta
+            name="description"
+            content="Speak with a virtual historian who has studied the primary accounts of Auschwitz."
+          />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <Component {...pageProps} />
+        <div className="bg-gray-900 p-3">
+          <p className="text-center text-white text-sm">
+            This website was made by{' '}
+            <Link className="underline" href="https://lukekosner.com">
+              Luke Kosner
+            </Link>{' '}
+            and is available for use under the{' '}
+            <Link
+              className="underline"
+              href="https://opensource.org/license/mit/"
+            >
+              MIT License
+            </Link>
+            . View the source code{' '}
+            <Link
+              className="underline"
+              href="https://github.com/LukeKosner/TAP"
+            >
+              here
+            </Link>
+            .
+          </p>
+        </div>
       </main>
     </>
   );

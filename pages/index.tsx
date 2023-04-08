@@ -1,61 +1,69 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import tracks from '@/public/karsten-winegeart-JioCsloIYro-unsplash.jpg';
+import interior from '@/public/colin-c-murphy-TbjTy1Q0ULM-unsplash.jpg';
+import gates from '@/public/frederick-wallace-_sVnHTFHQDU-unsplash.jpg';
 
 export default function Home() {
   return (
-    <div className="max-w-screen flex flex-col lg:m-10 lg:mt-10 my-5 p-3 space-y-5 place-items-center text-center">
-      <p>Auschwitz was a place of unimaginable suffering.</p>
-      <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
-        <Image
-          src="/karsten-winegeart-JioCsloIYro-unsplash.jpg"
-          fill={true}
-          alt="The train tracks leading to Auschwitz."
-          className="rounded-xl"
-        />
-        <Link href="https://unsplash.com/photos/JioCsloIYro">
-          <p className="absolute bottom-2 left-2 font-tight uppercase bg-white text-black rounded-2xl px-2 ">
-            Credit
-          </p>
+    <div className="bg-gray-800 text-white max-w-screen">
+      <div className="flex flex-col lg:p-10 lg:pt-10 py-5 px-5 space-y-5 place-items-center text-center ">
+        <p className="md:text-lg text-md">
+          Auschwitz was a place of unimaginable suffering.
+        </p>
+        <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
+          <Image
+            src={tracks}
+            fill={true}
+            alt="The train tracks leading to Auschwitz."
+            className="rounded-xl"
+          />
+          <Link href="https://unsplash.com/photos/JioCsloIYro">
+            <p className="absolute bottom-2 left-2 font-tight uppercase bg-gray-900 rounded-2xl px-2 ">
+              Credit
+            </p>
+          </Link>
+        </div>
+        <p className="md:text-lg text-md">
+          There have been innumerable interviews of survivors and Nazi
+          officials.
+        </p>
+        <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
+          <Image
+            src={interior}
+            fill={true}
+            alt="Auschwitz interior."
+            className="rounded-xl"
+          />
+          <Link href="https://unsplash.com/photos/TbjTy1Q0ULM">
+            <p className="absolute bottom-2 left-2 font-tight uppercase bg-gray-900 rounded-2xl px-2 ">
+              Credit
+            </p>
+          </Link>
+        </div>
+        <p className="md:text-lg text-md">
+          Now, we can use artificial intelligence to learn about the world's
+          greatest charnel house solely from primary accounts.
+        </p>
+        <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
+          <Image
+            src={gates}
+            fill={true}
+            alt="Auschwitz gates."
+            className="rounded-xl"
+          />
+          <Link href="https://unsplash.com/photos/_sVnHTFHQDU">
+            <p className="absolute bottom-2 left-2 font-tight uppercase bg-gray-900 rounded-2xl px-2 ">
+              Credit
+            </p>
+          </Link>
+        </div>
+        <Link href="/app">
+          <button className="bg-gray-900 text-white rounded-md w-36 p-3">
+            Start Chatting
+          </button>
         </Link>
       </div>
-      <p>
-        There have been innumerable interviews of survivors and Nazi officials.
-      </p>
-      <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
-        <Image
-          src="/colin-c-murphy-TbjTy1Q0ULM-unsplash.jpg"
-          fill={true}
-          alt="Auschwitz interior."
-          className="rounded-xl"
-        />
-        <Link href="https://unsplash.com/photos/TbjTy1Q0ULM">
-          <p className="absolute bottom-2 left-2 font-tight uppercase bg-white text-black rounded-2xl px-2 ">
-            Credit
-          </p>
-        </Link>
-      </div>
-      <p>
-        Now, we can use artificial intelligence to learn about the world's
-        greatest charnel house from primary sources.
-      </p>
-      <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
-        <Image
-          src="/frederick-wallace-_sVnHTFHQDU-unsplash.jpg"
-          fill={true}
-          alt="Auschwitz interior."
-          className="rounded-xl"
-        />
-        <Link href="https://unsplash.com/photos/_sVnHTFHQDU">
-          <p className="absolute bottom-2 left-2 font-tight uppercase bg-white text-black rounded-2xl px-2 ">
-            Credit
-          </p>
-        </Link>
-      </div>
-      <Link href="/app">
-        <button className="bg-gray-900 text-white rounded-md w-36 p-3">
-          Start Chatting
-        </button>
-      </Link>
     </div>
   );
 }
