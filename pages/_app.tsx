@@ -1,6 +1,7 @@
 import '@/styles/base.css';
 import type { AppProps } from 'next/app';
-import { Cormorant_Garamond, Inter_Tight } from 'next/font/google';
+import { Cormorant_Garamond, Inter_Tight, Inter } from 'next/font/google';
+import Head from 'next/head';
 
 export const metadata = {
   title: 'The Auschwitz Project',
@@ -21,12 +22,30 @@ const inter_tight = Inter_Tight({
   subsets: ['latin'],
 });
 
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+});
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <main
-        className={`${inter_tight.variable} ${cormorant_garamond.variable}`}
+        className={`${inter_tight.variable} ${cormorant_garamond.variable} ${inter.variable} font-body`}
       >
+        <div className="flex justify-between items-center bg-gray-900 p-3 h-14">
+          <h3 className="text-2xl font-serif font-bold text-white">
+            The Auschwitz Project
+          </h3>
+          <Head>
+            <title>The Auschwitz Project</title>
+            <meta
+              name="description"
+              content="Speak with a virtual historian who has studied the primary accounts of Auschwitz."
+            />
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
+        </div>
         <Component {...pageProps} />
       </main>
     </>

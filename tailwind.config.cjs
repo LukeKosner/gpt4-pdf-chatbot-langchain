@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -10,6 +12,8 @@ module.exports = {
       fontFamily: {
         serif: ['var(--font-cormorant-garamond)'],
         tight: ['var(--font-inter-tight)'],
+        body: ['var(--font-inter)'],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
     },
   },
