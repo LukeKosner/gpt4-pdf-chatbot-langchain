@@ -1,8 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import tracks from '@/public/karsten-winegeart-JioCsloIYro-unsplash.jpg';
-import interior from '@/public/colin-c-murphy-TbjTy1Q0ULM-unsplash.jpg';
-import gates from '@/public/frederick-wallace-_sVnHTFHQDU-unsplash.jpg';
 
 export default function Home() {
   return (
@@ -13,7 +10,9 @@ export default function Home() {
         </p>
         <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
           <Image
-            src={tracks}
+            src={
+              'https://images.unsplash.com/photo-1600356604120-a282718b29b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80'
+            }
             fill={true}
             alt="The train tracks leading to Auschwitz."
             className="rounded-xl"
@@ -30,7 +29,9 @@ export default function Home() {
         </p>
         <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
           <Image
-            src={interior}
+            src={
+              'https://images.unsplash.com/photo-1638288826688-f0efcb9da93a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80'
+            }
             fill={true}
             alt="Auschwitz interior."
             className="rounded-xl"
@@ -47,7 +48,7 @@ export default function Home() {
         </p>
         <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
           <Image
-            src={gates}
+            src={"https://images.unsplash.com/photo-1610336875937-dcea9a658408?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"}
             fill={true}
             alt="Auschwitz gates."
             className="rounded-xl"
