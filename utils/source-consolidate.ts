@@ -1,25 +1,5 @@
-import findSource from '@/sources/sources';
-
-enum InterviewType {
-  USHMM = 'USHMM',
-  IIT = 'IIT',
-  Hoess = 'Hoess',
-  Pending = 'Pending',
-}
-
-type Interview = {
-  name: string;
-  url: string;
-  type?: InterviewType;
-};
-
-type SourceDoc = {
-  pageContent: string;
-  metadata: {
-    source: string;
-    interview?: Interview;
-  };
-};
+import findSource from '@/utils/source-finder';
+import { SourceDoc } from '@/types/messages';
 
 export default function consolidate(sourceDocs: SourceDoc[]) {
   const combinedDocs: SourceDoc[] = [];
@@ -53,6 +33,3 @@ export default function consolidate(sourceDocs: SourceDoc[]) {
   console.log('combinedDocs', combinedDocs);
   return combinedDocs;
 }
-
-export type { SourceDoc, Interview };
-export { InterviewType };

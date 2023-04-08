@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { OpenAIEmbeddings } from 'langchain/embeddings';
 import { PineconeStore } from 'langchain/vectorstores';
-import { makeChain } from '@/utils/makechain';
+import { makeChain } from '@/utils/chain-creator';
 import { pinecone } from '@/utils/pinecone-client';
 import {
   PINECONE_INDEX_NAME,

@@ -1,10 +1,7 @@
 {
   "name": "theauschwitzproject",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "private": false,
-  "engines": {
-    "node": ">=18"
-  },
   "license": "MIT",
   "author": "Luke Kosner",
   "type": "module",
@@ -23,6 +20,9 @@
     "@radix-ui/react-accordion": "^1.1.1",
     "clsx": "^1.2.1",
     "dotenv": "^16.0.3",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "langchain": "0.0.41",
     "lucide-react": "^0.125.0",
     "next": "13.2.3",
@@ -36,15 +36,21 @@
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.57.1",
     "autoprefixer": "^10.4.14",
-    "eslint": "8.35.0",
+    "eslint": "^8.0.1",
     "eslint-config-next": "13.2.3",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.32.2",
     "postcss": "^8.4.21",
     "prettier": "^2.8.7",
     "tailwindcss": "^3.3.1",
     "tsx": "^3.12.6",
-    "typescript": "^4.9.5"
+    "typescript": "*"
   },
   "keywords": [
     "holocaust",

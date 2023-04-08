@@ -1,4 +1,4 @@
-import { Interview, InterviewType } from '@/utils/sourceConsolidation';
+import { Interview, InterviewType } from '@/types/interviews'
 
 type Interviews = {
   [key: string]: Interview;
