@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 import '@/styles/base.css';
 import type { AppProps } from 'next/app';
 import { Cormorant_Garamond, Inter_Tight, Inter } from 'next/font/google';
@@ -31,6 +32,7 @@ const inter = Inter({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+      <GoogleAnalytics trackPageViews />
       <main
         className={`${inter_tight.variable} ${cormorant_garamond.variable} ${inter.variable} font-body`}
       >

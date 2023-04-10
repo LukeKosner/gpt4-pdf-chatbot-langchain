@@ -31,7 +31,7 @@ export default function Messages(props: PropsWithChildren<Props>) {
                   <p className="text-lg md:text-xl visible md:invisible font-tight mr-3">
                     Virtual Historian
                   </p>
-                  <div className="bg-blue-500 p-3 rounded-xl max-w-4xl">
+                  <div className="bg-blue-500 p-3 rounded-xl lg:max-w-4xl md:max-w-lg max-w-4xl">
                     <ReactMarkdown linkTarget="_blank">
                       {message.message}
                     </ReactMarkdown>
@@ -71,7 +71,7 @@ export default function Messages(props: PropsWithChildren<Props>) {
                                 </ReactMarkdown>
                               </div>
                               <Link href={doc.metadata.interview.url}>
-                                <button className="mt-2 h-12 w-1/2 bg-white rounded-xl text-gray-800">
+                                <button className="mt-2 bg-gray-900 text-white rounded-md w-36 p-3">
                                   <b>View Source</b>
                                 </button>
                               </Link>
@@ -136,7 +136,7 @@ export default function Messages(props: PropsWithChildren<Props>) {
                               </ReactMarkdown>
                             </div>
                             <Link href={doc.metadata.interview.url}>
-                              <button className="mt-2 h-12 w-1/2 bg-white rounded-xl text-gray-800">
+                              <button className="mt-2 bg-gray-900 text-white rounded-md w-36 p-3">
                                 <b>View Source</b>
                               </button>
                             </Link>

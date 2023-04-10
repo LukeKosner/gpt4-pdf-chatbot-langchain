@@ -25,6 +25,7 @@ specifiers:
   langchain: 0.0.41
   lucide-react: ^0.125.0
   next: 13.2.3
+  nextjs-google-analytics: ^2.3.3
   pdf-parse: 1.1.1
   postcss: ^8.4.21
   prettier: ^2.8.7
@@ -49,6 +50,7 @@ dependencies:
   langchain: 0.0.41_gmj7kmepz6e4hbef53kmpddf3a
   lucide-react: 0.125.0_react@18.2.0
   next: 13.2.3_biqbaboplfbrettd7655fr4n2y
+  nextjs-google-analytics: 2.3.3_next@13.2.3+react@18.2.0
   pdf-parse: 1.1.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2075,7 +2077,6 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /function-bind/1.1.1:
@@ -2972,6 +2973,18 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+    dev: false
+
+  /nextjs-google-analytics/2.3.3_next@13.2.3+react@18.2.0:
+    resolution: {integrity: sha512-Y6sI6A7wt5dji8hYBnVkOh9LTyImSLFZXx3FpyQgVW7W4b4qEFHjH2u3fhDJsrRZeLlUGM8/RuHD/mhHc2Axfg==}
+    peerDependencies:
+      next: '>=11.0.0'
+      react: '>=17.0.0'
+    dependencies:
+      next: 13.2.3_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: false
 
   /node-abi/3.35.0:
