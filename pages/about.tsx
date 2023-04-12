@@ -6,7 +6,7 @@ export default function About() {
       <ul className="p-10 space-y-10">
         <h1 className="lg:text-5xl text-3xl font-serif">
           The Auschwitz Project was made possible by applied generative
-          artificial intelligence. Here's what that means.
+          artificial intelligence. Here's what that means:
         </h1>
         <li className="lg:text-lg text-md list-disc">
           Generative AI is a type of machine learning that can generate new
@@ -30,8 +30,8 @@ export default function About() {
         <li className="lg:text-lg text-md list-disc">
           The Auschwitz Project uses applied generative AI to generate new
           content based on the primary accounts of Auschwitz. The model is
-          trained on the entire corpus of primary accounts of Auschwitz. The
-          model is then used to generate new content that is mathmatically
+          trained on the provided corpus of primary accounts of Auschwitz. The
+          model is then used to generate new content that is mathematically
           similar to the primary accounts of Auschwitz to provide an accurate,
           360° picture of the commandant's testimony coupled with primary
           accounts to back it up and sources. The model was ordered not to use
@@ -51,7 +51,7 @@ export default function About() {
         </li>
         <h1 className="lg:text-5xl text-3xl font-serif">
           The use of applied AI in history is intriguing and has the potential
-          to revolutionize the field. Here's why.
+          to revolutionize the field. Here's why:
         </h1>
         <li className="lg:text-lg text-md list-disc">
           AI can analyze large amounts of content in any language and provide
@@ -94,7 +94,11 @@ export default function About() {
           >
             README on GitHub
           </Link>
-          .
+          . This project is not affiliated with the Auschwitz Memorial and
+          Museum, the United States Holocaust Memorial Museum, or David Boder.
+          The project is not intended to be used for research or academic
+          purposes without fact-checking. Please be aware that the content of
+          the AI generated prompts may be disturbing.
         </h3>
       </ul>
     </div>

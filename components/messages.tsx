@@ -31,7 +31,7 @@ export default function Messages(props: PropsWithChildren<Props>) {
                   <p className="text-lg md:text-xl visible md:invisible font-tight mr-3">
                     Virtual Historian
                   </p>
-                  <div className="bg-blue-500 p-3 rounded-xl lg:max-w-4xl md:max-w-lg max-w-4xl">
+                  <div className="bg-blue-500 p-3 rounded-xl xl:max-w-4xl lg:max-w-3xl md:max-w-lg max-w-4xl">
                     <ReactMarkdown linkTarget="_blank">
                       {message.message}
                     </ReactMarkdown>

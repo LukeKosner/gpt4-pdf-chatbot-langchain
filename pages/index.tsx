@@ -43,6 +43,27 @@ export default function Home() {
           </Link>
         </div>
         <p className="md:text-lg text-md">
+          Rudolf Hoess was behind it all as the Nazi commandant of Auschwitz,
+          and his 1946 testimony at The Nuremberg Trials revealed the
+          systematized murder and tragedy at the death camp.
+        </p>
+        <div className="relative md:w-[460.5px] md:h-[604.5px] w-[307px] h-[403px]">
+          <Image
+            src={
+              'https://upload.wikimedia.org/wikipedia/commons/1/1c/Rudolf_H%C3%B6%C3%9F_crop.jpg'
+            }
+            fill={true}
+            alt="Rudolf Hoess."
+            className="rounded-xl"
+          />
+          <Link href="https://en.wikipedia.org/wiki/Rudolf_H%C3%B6ss?useskin=vector#/media/File:Rudolf_H%C3%B6%C3%9F_crop.jpg">
+            <p className="absolute bottom-2 left-2 font-tight uppercase bg-gray-900 rounded-2xl px-2 ">
+              Credit
+            </p>
+          </Link>
+        </div>
+
+        <p className="md:text-lg text-md">
           Now, we can use artificial intelligence to learn about the world's
           greatest death camp solely from primary accounts.
         </p>
@@ -61,7 +82,8 @@ export default function Home() {
             </p>
           </Link>
         </div>
-        <div className="flex flex-row space-x-3">
+
+        <div className="flex flex-col space-y-3 md:space-y-0 md:flex-row md:space-x-3">
           <Link href="/about">
             <button className="bg-gray-900 text-white rounded-md w-36 p-3">
               How it Works
