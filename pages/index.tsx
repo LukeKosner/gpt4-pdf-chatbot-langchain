@@ -65,7 +65,7 @@ export default function Home(): JSX.Element {
         </div>
 
         <p className="md:text-lg text-md">
-          Now, we can use artificial intelligence to learn about the world&aposs
+          Now, we can use artificial intelligence to learn about the world&apos;
           greatest death camp solely from primary accounts.
         </p>
         <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
