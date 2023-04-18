@@ -1,7 +1,8 @@
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <div className="bg-gray-800 text-white max-w-screen">
       <div className="flex flex-col lg:p-10 lg:pt-10 py-5 px-5 space-y-5 place-items-center text-center ">
@@ -64,7 +65,7 @@ export default function Home() {
         </div>
 
         <p className="md:text-lg text-md">
-          Now, we can use artificial intelligence to learn about the world's
+          Now, we can use artificial intelligence to learn about the world&aposs
           greatest death camp solely from primary accounts.
         </p>
         <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">

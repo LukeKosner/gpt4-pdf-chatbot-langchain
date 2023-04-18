@@ -1,17 +1,21 @@
-import { useRef, useState, useEffect, useMemo, useCallback } from 'react';
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from 'react';
 import { fetchEventSource } from '@microsoft/fetch-event-source';
-import { Document } from 'langchain/document';
 
 import consolidate from '@/utils/source-consolidate';
 
-import { ChatMessage, Chats } from '@/types/messages';
+import { type ChatMessage, type Chats } from '@/types/messages';
 
 import Messages from '@/components/messages';
 
-export default function App() {
+export default function App(): JSX.Element {
   const [query, setQuery] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
-  const [sourceDocs, setSourceDocs] = useState<Document[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [messageState, setMessageState] = useState<ChatMessage>({
     messages: [
@@ -34,12 +38,12 @@ export default function App() {
   }, []);
 
   // handle form submission
-  async function handleSubmit(e: any) {
+  async function handleSubmit(e: any): Promise<void> {
     e.preventDefault();
 
     setError(null);
 
-    if (!query) {
+    if (query.length === 0) {
       return;
     }
 
@@ -64,7 +68,7 @@ export default function App() {
     const ctrl = new AbortController();
 
     try {
-      fetchEventSource('/api/chat', {
+      void fetchEventSource('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -94,7 +98,7 @@ export default function App() {
           } else {
             const data = JSON.parse(event.data);
 
-            if (data.sourceDocs) {
+            if (data.sourceDocs != null) {
               setMessageState((state: ChatMessage) => ({
                 ...state,
                 pendingSourceDocs: consolidate(data.sourceDocs),
@@ -102,7 +106,8 @@ export default function App() {
             } else {
               setMessageState((state: ChatMessage) => ({
                 ...state,
-                pending: (state.pending ?? '') + data.data,
+                // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+                pending: ((state.pending ?? '') as any) + data.data,
               }));
             }
           }
@@ -118,25 +123,24 @@ export default function App() {
   // prevent empty submissions
   const handleEnter = useCallback(
     (e: any) => {
-      if (e.key === 'Enter' && query) {
-        handleSubmit(e);
-      } else if (e.key == 'Enter') {
+      if (e.key === 'Enter' && query.length > 0) {
+        void handleSubmit(e);
+      } else if (e.key === 'Enter') {
         e.preventDefault();
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [query],
   );
 
   const chats: Chats = useMemo(
     () => [
       ...messages,
-      ...(pending
+      ...(pending != null
         ? [
             {
               type: 'apiMessage',
               message: pending,
-              sourceDocs: pendingSourceDocs || [],
+              sourceDocs: pendingSourceDocs != null ? pendingSourceDocs : [],
             },
           ]
         : []),
@@ -146,7 +150,7 @@ export default function App() {
 
   // scroll to bottom of chat
   useEffect(() => {
-    if (messageListRef.current) {
+    if (messageListRef.current != null) {
       messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
     }
   }, [chats]);
@@ -182,7 +186,9 @@ export default function App() {
                   : 'What did Rudolf Hoess do?'
               }
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+                setQuery(e.target.value);
+              }}
             />
             <button
               type="submit"
@@ -192,7 +198,7 @@ export default function App() {
               {loading ? 'Loading' : 'Ask'}
             </button>
           </form>
-          {error && (
+          {error != null && (
             <div className="border border-red-400 rounded-md p-4">
               <p className="text-red-500">{error}</p>
             </div>
