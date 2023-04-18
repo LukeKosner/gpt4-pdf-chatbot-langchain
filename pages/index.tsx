@@ -11,7 +11,7 @@ export default function Home() {
         <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
           <Image
             src={
-              'https://images.unsplash.com/photo-1600356604120-a282718b29b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80'
+              'https://i.ibb.co/MR8mhRy/karsten-winegeart-Jio-Cslo-IYro-unsplash.jpg'
             }
             fill={true}
             alt="The train tracks leading to Auschwitz."
@@ -30,7 +30,7 @@ export default function Home() {
         <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
           <Image
             src={
-              'https://images.unsplash.com/photo-1638288826688-f0efcb9da93a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80'
+              'https://i.ibb.co/sjq8x0z/colin-c-murphy-Tbj-Ty1-Q0-ULM-unsplash.jpg'
             }
             fill={true}
             alt="Auschwitz interior."
@@ -70,7 +70,7 @@ export default function Home() {
         <div className="relative md:w-[660px] md:h-[440px] w-[330px] h-[220px]">
           <Image
             src={
-              'https://images.unsplash.com/photo-1610336875937-dcea9a658408?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80'
+              'https://i.ibb.co/ThsJKgs/frederick-wallace-s-Vn-HTFHQDU-unsplash.jpg'
             }
             fill={true}
             alt="Auschwitz gates."

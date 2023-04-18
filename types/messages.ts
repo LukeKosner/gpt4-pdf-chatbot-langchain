@@ -1,37 +1,35 @@
-import { Document } from 'langchain/document';
-import { Interview } from '@/types/interviews';
+import { type Document } from 'langchain/document';
+import { type Interview } from '@/types/interviews';
 
-export type Message = {
+export interface Message {
   type: 'apiMessage' | 'userMessage';
   message: string;
   isStreaming?: boolean;
   sourceDocs?: Document[];
-};
+}
 
-export type ChatMessage = {
+export interface ChatMessage {
   messages: Message[];
   pending?: string;
-  history: [string, string][];
+  history: Array<[string, string]>;
   pendingSourceDocs?: SourceDoc[];
-};
+}
 
-export type ChatMessages = {
-  [key: string]: ChatMessage;
-};
+export type ChatMessages = Record<string, ChatMessage>;
 
-export type SourceDoc = {
+export interface SourceDoc {
   pageContent: string;
   metadata: {
     source: string;
     interview?: Interview;
   };
-};
+}
 
-export type Chats = (
+export type Chats = Array<
   | Message
   | {
       type: string;
       message: string;
       sourceDocs?: SourceDoc[];
     }
-)[];
+>;

@@ -5,8 +5,8 @@ export enum InterviewType {
   Pending = 'Pending',
 }
 
-export type Interview = {
+export interface Interview {
   name: string;
   url: string;
   type?: InterviewType;
-};
+}

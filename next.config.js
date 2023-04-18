@@ -7,7 +7,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['images.unsplash.com', 'upload.wikimedia.org'],
+    domains: ['images.unsplash.com', 'upload.wikimedia.org', 'i.ibb.co'],
   },
 };
 

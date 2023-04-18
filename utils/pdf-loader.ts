@@ -24,7 +24,7 @@ export abstract class BufferLoader extends BaseDocumentLoader {
         .then((ab) => Buffer.from(ab));
       metadata = { source: 'blob', blobType: this.filePathOrBlob.type };
     }
-    return this.parse(buffer, metadata);
+    return await this.parse(buffer, metadata);
   }
 }
 
@@ -47,6 +47,7 @@ export class CustomPDFLoader extends BufferLoader {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 async function PDFLoaderImports() {
   try {
     // the main entrypoint has some debug code that we don't want to import

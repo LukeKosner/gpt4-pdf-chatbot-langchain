@@ -12,9 +12,9 @@ import { DirectoryLoader, TextLoader } from 'langchain/document_loaders';
 /* Name of directory to retrieve your files from */
 const filePath = 'sources';
 
-export const run = async () => {
+export async function run(): Promise<void> {
   try {
-    /*load raw docs from the all files in the directory */
+    /* load raw docs from the all files in the directory */
     const directoryLoader = new DirectoryLoader(filePath, {
       '.pdf': (path) => new CustomPDFLoader(path),
       '.txt': (path) => new TextLoader(path),
@@ -33,11 +33,11 @@ export const run = async () => {
     console.log('split docs', docs);
 
     console.log('creating vector store...');
-    /*create and store the embeddings in the vectorStore*/
+    /* create and store the embeddings in the vectorStore */
     const embeddings = new OpenAIEmbeddings();
-    const index = pinecone.Index(PINECONE_INDEX_NAME); //change to your own index name
+    const index = pinecone.Index(PINECONE_INDEX_NAME); // change to your own index name
 
-    //embed the PDF documents
+    // embed the PDF documents
     await PineconeStore.fromDocuments(docs, embeddings, {
       pineconeIndex: index,
       namespace: PINECONE_NAME_SPACE,
@@ -47,9 +47,10 @@ export const run = async () => {
     console.log('error', error);
     throw new Error('Failed to ingest your data');
   }
-};
+}
 
-(async () => {
+try {
   await run();
-  console.log('ingestion complete');
-})();
+} catch (error) {
+  console.log('error', error);
+}

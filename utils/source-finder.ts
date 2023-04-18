@@ -1,8 +1,6 @@
-import { Interview, InterviewType } from '@/types/interviews'
+import { type Interview, InterviewType } from '@/types/interviews';
 
-type Interviews = {
-  [key: string]: Interview;
-};
+type Interviews = Record<string, Interview>;
 
 const sources: Interviews = {
   'bassfreund.txt': {
@@ -199,16 +197,16 @@ const sources: Interviews = {
   },
 };
 
-export default function findSource(path: string) {
+export default function findSource(path: string): Interview | undefined {
   let type: InterviewType = InterviewType.Pending;
   const fileName = path.split('/').pop();
 
-  if (!fileName) {
+  if (fileName == null) {
     return undefined;
   }
 
   if (fileName in sources) {
-    if (fileName == 'hoess.txt') {
+    if (fileName === 'hoess.txt') {
       type = InterviewType.Hoess;
     }
 

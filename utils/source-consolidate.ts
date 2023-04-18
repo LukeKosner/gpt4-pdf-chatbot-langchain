@@ -1,7 +1,7 @@
 import findSource from '@/utils/source-finder';
-import { SourceDoc } from '@/types/messages';
+import { type SourceDoc } from '@/types/messages';
 
-export default function consolidate(sourceDocs: SourceDoc[]) {
+export default function consolidate(sourceDocs: SourceDoc[]): SourceDoc[] {
   const combinedDocs: SourceDoc[] = [];
 
   // get rid of duplicates and add interview metadata
@@ -23,7 +23,7 @@ export default function consolidate(sourceDocs: SourceDoc[]) {
       (doc) => doc.metadata.source === newDoc.metadata.source,
     );
 
-    if (existingDoc) {
+    if (existingDoc != null) {
       existingDoc.pageContent += newDoc.pageContent;
     } else {
       combinedDocs.push(newDoc);

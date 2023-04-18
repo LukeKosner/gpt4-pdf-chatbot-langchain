@@ -11,18 +11,19 @@ import {
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): Promise<void> {
   const { question, history } = req.body;
 
-  if (!question) {
-    return res.status(400).json({ message: 'No question in the request' });
+  if (question == null) {
+    res.status(400).json({ message: 'No question in the request' });
+    return;
   }
   // OpenAI recommends replacing newlines with spaces for best results
   const sanitizedQuestion = question.trim().replaceAll('\n', ' ');
 
   const index = pinecone.Index(PINECONE_INDEX_NAME);
 
-  /* create vectorstore*/
+  /* create vectorstore */
   const vectorStore = await PineconeStore.fromExistingIndex(
     new OpenAIEmbeddings({}),
     {
@@ -38,22 +39,22 @@ export default async function handler(
     Connection: 'keep-alive',
   });
 
-  const sendData = (data: string) => {
+  function sendData(data: string): void {
     res.write(`data: ${data}\n\n`);
-  };
+  }
 
   sendData(JSON.stringify({ data: '' }));
 
-  //create chain
+  // create chain
   const chain = makeChain(vectorStore, (token: string) => {
     sendData(JSON.stringify({ data: token }));
   });
 
   try {
-    //Ask a question
+    // Ask a question
     const response = await chain.call({
       question: sanitizedQuestion,
-      chat_history: history || [],
+      chat_history: Boolean(history) || [],
     });
 
     console.log('response', response);

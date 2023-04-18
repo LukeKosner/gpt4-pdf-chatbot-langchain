@@ -1,6 +1,6 @@
 import { OpenAIChat } from 'langchain/llms';
 import { LLMChain, ChatVectorDBQAChain, loadQAChain } from 'langchain/chains';
-import { PineconeStore } from 'langchain/vectorstores';
+import { type PineconeStore } from 'langchain/vectorstores';
 import { PromptTemplate } from 'langchain/prompts';
 import { CallbackManager } from 'langchain/callbacks';
 
@@ -14,7 +14,7 @@ Standalone question:`);
 
 const QA_PROMPT = PromptTemplate.fromTemplate(
   `You are a historian responding to questions about Auschwitz using primary sources. You are given the following testimony of Rudolf Hoess, 
-interviews of Auschwitz survivors, and a question. Provide a conversational, approximately paragraph-long answer based on the context provided, attempting to use both Hoess's 
+interviews of Auschwitz survivors, and one or more questions. Provide a conversational, approximately paragraph-long answer to the unanswered question based on the context provided, attempting to use both Hoess's 
 testimony and the interviews to make a historically accurate response that gives personal examples from the survivors. Do NOT provide in-text citations. 
 Do NOT make up hyperlinks. If you can't find the answer in the context below, just say "The primary sources I have do not mention this." Don't try to make up an answer.
 If the question is not related to the context, politely respond that you are tuned to only answer questions that are related to the context.
@@ -26,10 +26,10 @@ Question: {question}
 Answer in Markdown:`,
 );
 
-export const makeChain = (
+export function makeChain(
   vectorstore: PineconeStore,
   onTokenStream?: (token: string) => void,
-) => {
+): ChatVectorDBQAChain {
   const questionGenerator = new LLMChain({
     llm: new OpenAIChat({ temperature: 0 }),
     prompt: CONDENSE_PROMPT,
@@ -37,16 +37,17 @@ export const makeChain = (
   const docChain = loadQAChain(
     new OpenAIChat({
       temperature: 0,
-      modelName: 'gpt-4', //change this to older versions (e.g. gpt-3.5-turbo) if you don't have access to gpt-4
+      modelName: 'gpt-4', // change this to older versions (e.g. gpt-3.5-turbo) if you don't have access to gpt-4
       streaming: Boolean(onTokenStream),
-      callbackManager: onTokenStream
-        ? CallbackManager.fromHandlers({
-            async handleLLMNewToken(token) {
-              onTokenStream(token);
-              console.log(token);
-            },
-          })
-        : undefined,
+      callbackManager:
+        onTokenStream != null
+          ? CallbackManager.fromHandlers({
+              async handleLLMNewToken(token) {
+                onTokenStream(token);
+                console.log(token);
+              },
+            })
+          : undefined,
     }),
     { prompt: QA_PROMPT },
   );
@@ -57,4 +58,4 @@ export const makeChain = (
     questionGeneratorChain: questionGenerator,
     returnSourceDocuments: true,
   });
-};
+}
